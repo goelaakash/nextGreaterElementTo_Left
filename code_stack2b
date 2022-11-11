@@ -1,0 +1,43 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    vector<int> nums={100,200,150,70,300};
+    
+    vector<int> ans(5,-1);
+    
+    stack<int> s;
+    
+    for(int i=0;i<nums.size();i++)
+    {
+        while(!s.empty() && s.top()<=nums[i])
+        {
+            s.pop();
+        }
+        if(s.empty()==true)
+        {
+            ans[i]=-1;
+        }
+        else
+        {
+            ans[i]=s.top();
+        }
+        s.push(nums[i]);
+    }
+    for(int i=0;i<ans.size();i++)
+    {
+        cout<<ans[i]<<" ";
+    }
+    
+    return 0;
+}
